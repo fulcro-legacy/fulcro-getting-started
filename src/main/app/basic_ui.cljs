@@ -17,7 +17,9 @@
     (let [{:keys [db/id person/name person/age]} (om/props this)
           onDelete (om/get-computed this :onDelete)]
       (dom/li nil
-        (dom/h5 nil name (str "(age: " age ")") (dom/button #js {:onClick #(onDelete id)} "X"))))))
+        (dom/h5 nil name (str "(age: " age ")")
+          (dom/button #js {:onClick #(df/refresh! this )} "Refresh")
+          (dom/button #js {:onClick #(onDelete id)} "X"))))))
 
 (def ui-person (om/factory Person {:keyfn :person/name}))
 
@@ -30,11 +32,7 @@
   (initial-state [comp-class {:keys [id label]}]
     {:db/id              id
      :person-list/label  label
-     :person-list/people (if (= id :friends)
-                           [(uc/get-initial-state Person {:id 1 :name "Sally" :age 32})
-                            (uc/get-initial-state Person {:id 2 :name "Joe" :age 22})]
-                           [(uc/get-initial-state Person {:id 3 :name "Fred" :age 11})
-                            (uc/get-initial-state Person {:id 4 :name "Bobby" :age 55})])})
+     :person-list/people []})
   Object
   (render [this]
     (let [{:keys [db/id person-list/label person-list/people]} (om/props this)

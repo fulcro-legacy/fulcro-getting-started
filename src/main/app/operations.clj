@@ -12,7 +12,7 @@
   "Server Mutation: Handles deleting a person on the server"
   [{:keys [list-id person-id]}]
   (action [{:keys [state]}]
-    (timbre/info "Server Deleting " person-id " from " list-id)
+    (timbre/info "Server deleting person" person-id)
     (swap! people-db dissoc person-id)))
 
 (defn get-people [kind keys]
@@ -20,6 +20,12 @@
     vals
     (filter #(= kind (:person/relation %)))
     vec))
+
+(defquery-entity :person/by-id
+  "Server query for allowing the client to pull an individual person from the database"
+  (value [env id params]
+    (timbre/info "Query for person" id)
+    (update (get @people-db id) :person/name str " (refreshed)")))
 
 (defquery-root :my-friends
   "Queries for friends and returns them to the client"
