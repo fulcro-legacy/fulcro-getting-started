@@ -1,4 +1,4 @@
-(ns ^:figwheel-always cljs.user
+(ns cljs.user
   (:require
     [app.basic-ui :refer [app-1 Root]]
     [untangled.client.core :as uc]))
