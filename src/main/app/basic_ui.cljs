@@ -3,7 +3,8 @@
             [om.dom :as dom]
             [app.operations :as ops]
             [om.next :as om :refer [defui]]
-            [untangled.client.data-fetch :as df]))
+            [untangled.client.data-fetch :as df]
+            [untangled.client.mutations :as m]))
 
 (defui ^:once Person
   static om/Ident
@@ -18,7 +19,7 @@
           onDelete (om/get-computed this :onDelete)]
       (dom/li nil
         (dom/h5 nil name (str "(age: " age ")")
-          (dom/button #js {:onClick #(df/refresh! this )} "Refresh")
+          (dom/button #js {:onClick #(df/refresh! this)} "Refresh")
           (dom/button #js {:onClick #(onDelete id)} "X"))))))
 
 (def ui-person (om/factory Person {:keyfn :person/name}))
@@ -49,6 +50,7 @@
 (defui ^:once Root
   static om/IQuery
   (query [this] [:ui/react-key
+                 :ui/person-id
                  {:friends (om/get-query PersonList)}
                  {:enemies (om/get-query PersonList)}])
   static
@@ -60,6 +62,7 @@
     ; NOTE: the data now comes in through props!!!
     (let [{:keys [ui/react-key friends enemies]} (om/props this)]
       (dom/div #js {:key react-key}
+        (dom/button #js {:onClick #(df/load this [:person/by-id 3] Person {})} "Refresh Person with ID 3")
         (ui-person-list friends)
         (ui-person-list enemies)))))
 
