@@ -3,10 +3,16 @@
     [untangled.server :as server :refer [defquery-root defquery-entity defmutation]]
     [taoensso.timbre :as timbre]))
 
-(def people-db (atom {1 {:db/id 1 :person/name "Server Joe" :person/age 55 :person/relation :friend}
-                      2 {:db/id 2 :person/name "Server Sally" :person/age 22 :person/relation :friend}
-                      3 {:db/id 3 :person/name "Server Judy" :person/age 76 :person/relation :enemy}
-                      4 {:db/id 4 :person/name "Server Sam" :person/age 32 :person/relation :friend}}))
+(def people-db (atom {1  {:db/id 1 :person/name "Bert" :person/age 55 :person/relation :friend}
+                      2  {:db/id 2 :person/name "Sally" :person/age 22 :person/relation :friend}
+                      3  {:db/id 3 :person/name "Allie" :person/age 76 :person/relation :enemy}
+                      4  {:db/id 4 :person/name "Zoe" :person/age 32 :person/relation :friend}
+                      99 {:db/id 99 :person/name "Me" :person/role "admin"}}))
+
+(defquery-root :current-user
+  "Queries for the current user returns it to the client"
+  (value [env params]
+    (get @people-db 99)))
 
 (defmutation delete-person
   "Server Mutation: Handles deleting a person on the server"

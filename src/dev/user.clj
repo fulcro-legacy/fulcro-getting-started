@@ -2,6 +2,7 @@
   (:require
     [figwheel-sidecar.system :as fig]
     app.server
+    app.operations
     [clojure.tools.namespace.repl :as tools-ns :refer [set-refresh-dirs]]
     [com.stuartsierra.component :as component]))
 
