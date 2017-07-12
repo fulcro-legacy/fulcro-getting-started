@@ -4,3 +4,4 @@ resources/public/js/
 figwheel_server.log
 my-project.iml
 target/
+out

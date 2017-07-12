@@ -1,7 +1,7 @@
 (ns app.rest
   (:refer-clojure :exclude [send])
-  (:require [untangled.client.logging :as log]
-            [untangled.client.network :as net]
+  (:require [fulcro.client.logging :as log]
+            [fulcro.client.network :as net]
             [cognitect.transit :as ct]
             [goog.events :as events]
             [om.transit :as t]
@@ -52,11 +52,11 @@
                                        (@global-error-callback status error)))]
         (if (zero? status)
           (log-and-dispatch-error
-            (str "UNTANGLED NETWORK ERROR: No connection established.")
+            (str "FULCRO NETWORK ERROR: No connection established.")
             {:type :network})
           (log-and-dispatch-error (str "SERVER ERROR CODE: " status) {})))
       (finally (.dispose xhr-io))))
-  net/UntangledNetwork
+  net/FulcroNetwork
   (send [this edn ok error]
     (let [xhrio       (make-xhrio)
           ; STEP 1: Convert the request(s) from Om query notation to REST...

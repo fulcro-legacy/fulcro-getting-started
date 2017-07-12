@@ -1,9 +1,9 @@
 (defproject my-project "0.0.1"
   :description "My Project"
-  :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
-                 [org.clojure/clojurescript "1.9.562"]
+  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
+                 [org.clojure/clojurescript "1.9.671"]
                  [org.omcljs/om "1.0.0-beta1"]
-                 [awkay/untangled "1.0.0-SNAPSHOT"]]
+                 [fulcrologic/fulcro "1.0.0-beta2"]]
 
   :source-paths ["src/main"]
   :resource-paths ["resources"]

@@ -1,12 +1,12 @@
 (ns app.basic-ui
-  (:require [untangled.client.core :as uc]
+  (:require [fulcro.client.core :as uc]
             [om.dom :as dom]
             [app.operations :as ops]
             [om.next :as om :refer [defui]]
             [app.rest :as rest]
-            [untangled.client.data-fetch :as df]
-            [untangled.client.mutations :as m]
-            [untangled.client.network :as net]))
+            [fulcro.client.data-fetch :as df]
+            [fulcro.client.mutations :as m]
+            [fulcro.client.network :as net]))
 
 (defui ^:once Person
   static om/Ident
@@ -103,8 +103,8 @@
         (dom/h4 nil "Blog Posts")
         (ui-posts blog-posts)))))
 
-(defonce app-1 (atom (uc/new-untangled-client
-                       :networking {:remote (net/make-untangled-network "/api" :global-error-callback (constantly nil))
+(defonce app-1 (atom (uc/new-fulcro-client
+                       :networking {:remote (net/make-fulcro-network "/api" :global-error-callback (constantly nil))
                                     :rest   (rest/make-rest-network)}
                        :started-callback (fn [app]
                                            (df/load app :posts Post {:remote :rest :target [:post-list/by-id :the-one :posts]})

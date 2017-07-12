@@ -1,6 +1,6 @@
 (ns app.operations
   (:require
-    [untangled.server :as server :refer [defquery-root defquery-entity defmutation]]
+    [fulcro.server :as server :refer [defquery-root defquery-entity defmutation]]
     [taoensso.timbre :as timbre]))
 
 (def people-db (atom {1  {:db/id 1 :person/name "Bert" :person/age 55 :person/relation :friend}

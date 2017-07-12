@@ -1,6 +1,6 @@
 (ns app.operations
   (:require
-    [untangled.client.mutations :as m :refer [defmutation]]
+    [fulcro.client.mutations :as m :refer [defmutation]]
     [om.next :as om]))
 
 (defmutation delete-person
