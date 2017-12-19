@@ -1,5 +1,7 @@
 # The Project
 
+These are the completed project files for the Fulcro [Getting Started Guide](https://github.com/fulcrologic/fulcro/blob/develop/GettingStarted.adoc).
+
 The main project source is in `src/main`.
 
 ```
