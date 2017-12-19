@@ -1,7 +1,0 @@
-resources/public/js/
-.gitignore.swp
-.idea/
-figwheel_server.log
-my-project.iml
-target/
-out
