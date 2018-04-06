@@ -43,6 +43,9 @@ amount of actual code. This can save you hours of setup.
 IMPORTANT: This document assumes you're working with Fulcro 2.5 and above. The differences are minor, but the DOM
 factories changed to be more succinct.
 
+NOTE: The solution files in this repository run, but have a slightly different naming/organization than
+the guide itself describes. Hopefully, I'll have time to update them more later. TK
+
 == Project setup
 
 You can get a basic app with no prewritten demo code using:
