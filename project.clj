@@ -1,15 +1,14 @@
-(defproject my-project "0.0.1"
-  :description "My Project"
-  :dependencies [[org.clojure/clojure "1.9.0-alpha17"]
-                 [org.clojure/clojurescript "1.9.671"]
-                 [org.omcljs/om "1.0.0-beta1"]
-                 [fulcrologic/fulcro "1.0.0-beta2"]]
+(defproject fulcrologic/fulcro-getting-started "0.0.1"
+  :description "Fulcro Getting Started"
+  :dependencies [[org.clojure/clojure "1.9.0"]
+                 [org.clojure/clojurescript "1.10.238"]
+                 [fulcrologic/fulcro "2.5.0-alpha5"]]
 
   :source-paths ["src/main"]
   :resource-paths ["resources"]
   :clean-targets ^{:protect false} ["resources/public/js" "target" "out"]
 
-  :plugins [[lein-cljsbuild "1.1.6"]]
+  :plugins [[lein-cljsbuild "1.1.7"]]
 
   :cljsbuild {:builds
               [{:id           "dev"
@@ -23,6 +22,5 @@
                                :optimizations :none}}]}
 
   :profiles {:dev {:source-paths ["src/dev" "src/main"]
-                   :dependencies [[binaryage/devtools "0.9.2"]
-                                  [org.clojure/tools.namespace "0.3.0-alpha4"]
-                                  [figwheel-sidecar "0.5.9"]]}})
+                   :dependencies [[binaryage/devtools "0.9.9"]
+                                  [figwheel-sidecar "0.5.15"]]}})
