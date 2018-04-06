@@ -2,7 +2,14 @@
   :description "Fulcro Getting Started"
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
-                 [fulcrologic/fulcro "2.5.0-alpha5"]]
+                 [fulcrologic/fulcro "2.5.0-beta1"]
+                 [com.taoensso/timbre "4.10.0"]
+
+                 ; These deps are only needed if you use built-in server components of Fulcro:
+                 [http-kit "2.2.0"]
+                 [ring/ring-core "1.6.3" :exclusions [commons-codec]]
+                 [bk/ring-gzip "0.2.1"]
+                 [bidi "2.1.3"]]
 
   :source-paths ["src/main"]
   :resource-paths ["resources"]
@@ -23,4 +30,5 @@
 
   :profiles {:dev {:source-paths ["src/dev" "src/main"]
                    :dependencies [[binaryage/devtools "0.9.9"]
+                                  [org.clojure/tools.namespace "0.3.0-alpha4"]
                                   [figwheel-sidecar "0.5.15"]]}})

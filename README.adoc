@@ -96,7 +96,6 @@ this:
 ```
 (ns app.ui.root
   (:require
-    translations.es
     [fulcro.client.dom :as dom]
     [fulcro.client.primitives :as prim :refer [defsc]]))
 

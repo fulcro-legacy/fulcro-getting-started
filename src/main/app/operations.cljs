@@ -1,7 +1,6 @@
 (ns app.operations
   (:require
-    [fulcro.client.mutations :as m :refer [defmutation]]
-    [om.next :as om]))
+    [fulcro.client.mutations :as m :refer [defmutation]]))
 
 (defmutation delete-person
   "Mutation: Delete the person with person-id from the list with list-id"
